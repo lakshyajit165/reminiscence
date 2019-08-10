@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(
+   private toastCtrl: ToastController
+  ) { }
 
   ngOnInit() {
   }
+
+  signup() {
+    firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+    .then((userData) => {
+
+      console.log(userData);
+      // Navigate user to the app page
+
+    })
+    .catch((err) => {
+      this.toastCtrl.create({
+        message: err.message,
+        duration: 3000
+      })
+      .then((toast) => {
+        toast.present();
+      });
+    });
+  }
+
 
 }
