@@ -8,9 +8,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SignupPipe } from './signup.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SignupPipe],
   entryComponents: [],
   imports: [
     BrowserModule,
