@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 
 
 @Component({
@@ -14,7 +14,8 @@ export class SignupPage implements OnInit {
   password: string;
 
   constructor(
-   private toastCtrl: ToastController
+   private toastCtrl: ToastController,
+   private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class SignupPage implements OnInit {
 
       console.log(userData);
       // Navigate user to the app page
+      this.navCtrl.navigateForward(['home']);
 
     })
     .catch((err) => {
